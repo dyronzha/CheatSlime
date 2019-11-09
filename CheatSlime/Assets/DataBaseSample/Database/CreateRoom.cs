@@ -147,12 +147,12 @@ public class CreateRoom : MonoBehaviour
                 (roomRef.Child(player[i].text)).Child("HP").SetValueAsync(100);
                 (roomRef.Child(player[i].text)).Child("ATK").SetValueAsync(100);
                 (roomRef.Child(player[i].text)).Child("DEF").SetValueAsync(100);
-                playerName[i] = player[i].text;
+                GameManager.Instance.PlayerName[i] = player[i].text;
             }
             LogInfo("創建完成，等待跳轉");
             createDone = true;
             ChangePlayerInfo.s_ChangePlayerInfo = new ChangePlayerInfo(roomRef);
-            GameManager.Instance.PlayerName = playerName;
+           // GameManager.Instance.PlayerName = playerName;
             
         }
     }

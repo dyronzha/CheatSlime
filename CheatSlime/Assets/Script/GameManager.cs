@@ -5,13 +5,13 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
 
 
 
-    string[] playerInput;
+    string[] playerInput = new string[4];
     public string[] PlayerInput {
         set { playerInput = value; }
         get { return playerInput; }
     }
 
-    string[] playerName;
+    string[] playerName = new string[4];
     public string[] PlayerName {
         set {playerName = value;}
         get {return playerName;}

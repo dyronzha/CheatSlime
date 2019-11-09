@@ -24,7 +24,6 @@ public class CharacterSelect : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        GameManager.Instance.PlayerName = new string[4] { "aaa", "bbb", "yee", "ccc" };
         for (int i = 0; i < 4; i++)
         {
             playerIcon[i] = transform.Find("PlayerIcon").GetChild(i).GetComponent<RectTransform>(); ;
@@ -81,7 +80,7 @@ public class CharacterSelect : MonoBehaviour
             }
 
         }
-        if (readyNum >= 4) ;
+        if (readyNum >= 4) UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
 }
 
