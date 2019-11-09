@@ -23,19 +23,19 @@ namespace CheatSlime.Player {
 
         // Start is called before the first frame update
         private void Awake ( ) {
-            for (int i = 0; i < players.Length; i++) {
+
+            for (int i = 0; i < maxNum; i++) {
+                SpawnSlime ( );
+            }
+            
+        }
+
+        void Start ( ) {
+             for (int i = 0; i < players.Length; i++) {
                 players [i] = transform.GetChild (i).GetComponent<Player> ( );
                 SetPlayer (i);
                 avatarID.Add (i);
             }
-            for (int i = 0; i < maxNum; i++) {
-                SpawnSlime ( );
-            }
-
-        }
-
-        void Start ( ) {
-
         }
 
         // Update is called once per frame
@@ -46,8 +46,11 @@ namespace CheatSlime.Player {
         }
 
         public void SetPlayer (int avatarID) {
-            // players [avatarID].MoveComponent.PlayerInput = GameManager.Instance.PlayerInput [avatarID];
-            // players [avatarID].Name = GameManager.Instance.PlayerName [avatarID];
+            players [avatarID].MoveComponent.PlayerInput = GameManager.Instance.PlayerInput [avatarID];
+            players [avatarID].Name = GameManager.Instance.PlayerName [avatarID];
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 0, players[avatarID].Health.ToString()); 
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 1, players[avatarID].Damage.ToString()); 
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 2, players[avatarID].Armor.ToString()); 
         }
 
         public void PlayerDead (int avatarID) {

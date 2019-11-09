@@ -20,7 +20,7 @@ namespace CheatSlime.Player {
         public Movement MoveComponent { get { return moveComponent; } }
 
         // Start is called before the first frame update
-        void Start ( ) {
+        void Awake ( ) {
             Tf = transform;
             Sr = GetComponent<SpriteRenderer> ( );
             Am = GetComponent<Animator> ( );

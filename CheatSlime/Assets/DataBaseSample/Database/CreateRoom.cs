@@ -64,7 +64,7 @@ public class CreateRoom : MonoBehaviour
     void Update()
     {
         if (logInformation) ShowLogInfo();
-        if (createDone) ;
+        if (createDone) UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     public void Confirm() {
@@ -142,7 +142,7 @@ public class CreateRoom : MonoBehaviour
             Debug.Log("準備創建");
             DatabaseReference roomRef = FirebaseDatabase.DefaultInstance.GetReference(room.text);
             string[] playerName = new string[4];
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 4; i++)
             {
                 (roomRef.Child(player[i].text)).Child("HP").SetValueAsync(100);
                 (roomRef.Child(player[i].text)).Child("ATK").SetValueAsync(100);
@@ -153,6 +153,7 @@ public class CreateRoom : MonoBehaviour
             createDone = true;
             ChangePlayerInfo.s_ChangePlayerInfo = new ChangePlayerInfo(roomRef);
             GameManager.Instance.PlayerName = playerName;
+            
         }
     }
 
