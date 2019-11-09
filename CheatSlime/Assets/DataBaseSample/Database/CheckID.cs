@@ -11,12 +11,18 @@ public class CheckID : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+    
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            FirebaseDatabase.DefaultInstance.GetReference("GameCount").Child("test").SetValueAsync(30);
+            FirebaseDatabase.DefaultInstance.GetReference("GameCount").Child("test2").SetValueAsync(-30);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space)) {
             FirebaseDatabase.DefaultInstance.GetReference("GameCount").GetValueAsync().ContinueWith(task => {
                 if (task.IsFaulted)
@@ -35,5 +41,9 @@ public class CheckID : MonoBehaviour
                 }
             });
         }
+
+
+
+
     }
 }

@@ -102,7 +102,22 @@ namespace Firebase.Sample.Database {
             }
           }
         };
-    }
+            
+            FirebaseDatabase.DefaultInstance.GetReference("GameCount").ChildChanged += (object sender2, ChildChangedEventArgs e2) =>
+            {
+                Debug.Log("child change");
+                if (e2.DatabaseError != null)
+                {
+                    Debug.LogError(e2.DatabaseError.Message);
+                    return;
+                }
+                if (e2.Snapshot != null)
+                {
+                    if (e2.Snapshot.Key.CompareTo("test") == 0) Debug.Log("test change " + e2.Snapshot.Value);
+                    else if (e2.Snapshot.Key == "test2") Debug.Log("test2 change " + e2.Snapshot.Value);
+                }
+            };
+        }
 
     // Exit if escape (or back, on mobile) is pressed.
     protected virtual void Update() {
