@@ -16,6 +16,8 @@ namespace CheatSlime.Player {
         public Transform Tf { get; protected set; }
         public SpriteRenderer Sr { get; protected set; }
         public Animator Am { get; protected set; }
+        public Movement MoveComponent { get { return moveComponent; } }
+
         // Start is called before the first frame update
         void Start ( ) {
             Tf = transform;

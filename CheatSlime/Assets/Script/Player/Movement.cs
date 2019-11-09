@@ -15,6 +15,9 @@ namespace CheatSlime.Player {
         float vertMove = 0;
         public bool IsFacingRight { get; protected set; }
 
+        string playerInput = string.Empty;
+        public string PlayerInput { get { return playerInput; } set { playerInput = value; } }
+
         void Start ( ) { }
 
         // Update is called once per frame
