@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
+using Eccentric.Utils;
+using Rend = Eccentric.Utils.Render;
 using UnityEngine;
 namespace CheatSlime.Player {
     public class Movement : Component {
@@ -13,9 +15,7 @@ namespace CheatSlime.Player {
         float vertMove = 0;
         public bool IsFacingRight { get; protected set; }
 
-        void Start ( ) {
-            Parent.Sr.flipX = bRenderInvert;
-        }
+        void Start ( ) { }
 
         // Update is called once per frame
         void Update ( ) {
@@ -28,13 +28,13 @@ namespace CheatSlime.Player {
             vertMove = Input.GetAxisRaw (vertString);
             if (horiMove != 0f)
                 IsFacingRight = horiMove > 0f ? true : false;
-            Vector3 direction = new Vector3 (horiMove, vertMove, 0f) * moveSpeed;
+            Vector2 direction = new Vector2 (horiMove, vertMove) * moveSpeed;
             Parent.Tf.Translate (direction * Time.deltaTime);
         }
 
         void Render ( ) {
-            Parent.Am.SetFloat (animHoriString, Mathf.Abs (horiMove));
-            Parent.Sr.flipX = bRenderInvert?!IsFacingRight : IsFacingRight;
+            Parent.Am.SetFloat (animHoriString, Mathf.Abs (horiMove)+0.01f);
+            Rend.ChangeDirection (IsFacingRight, Parent.Tf, bRenderInvert);
         }
     }
 }
