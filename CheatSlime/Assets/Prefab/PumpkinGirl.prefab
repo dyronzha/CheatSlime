@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 72227260319111726}
   - component: {fileID: 72227260319111700}
   - component: {fileID: 72227260319111698}
-  - component: {fileID: 72227260319111699}
+  - component: {fileID: 3879938982347712864}
   m_Layer: 0
   m_Name: PumpkinGirl
   m_TagString: Player
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 615070917541623806, guid: a7c6a022630f9b643ac3b9b6f45fcfcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3c5dfa6f30a514ab678a70d34df8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 99
   name: 
   health: 100
   armor: 100
@@ -120,7 +119,7 @@ MonoBehaviour:
   vertString: Vertical
   animHoriString: VelocityX
   moveSpeed: 5.61
-  bRenderInvert: 0
+  bRenderInvert: 1
 --- !u!114 &72227260319111700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +162,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &72227260319111699
+--- !u!61 &3879938982347712864
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &72227260845138084
 GameObject:

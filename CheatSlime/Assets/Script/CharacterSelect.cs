@@ -55,7 +55,7 @@ public class CharacterSelect : MonoBehaviour
 
             if (Input.GetButtonDown(playerInput[i] + "Attack"))
             {
-                Debug.Log("attack" + playerIcon[i].transform.position);
+                //Debug.Log("attack" + playerIcon[i].transform.position);
                 RaycastHit2D hit = Physics2D.Raycast(playerIcon[i].transform.position, Vector2.zero, 1 << LayerMask.NameToLayer("RoleSelect"));
 
                 if (hit.collider != null)

@@ -15,7 +15,8 @@ namespace CheatSlime.Player {
     public class PlayerManager : MonoBehaviour {
         [SerializeField] List<GameObject> slimePrefab = new List<GameObject> ( );
         [SerializeField] float maxNum = 0;
-        [SerializeField] Vector2 lvRange = Vector2.zero;
+        [SerializeField] Vector2 slimeLvRange = Vector2.zero;
+        [SerializeField] Vector2 playerLvRange = Vector2.zero;
         [SerializeField] Transform slimeParent = null;
         List<Enemy.Enemy> slimes = new List<Enemy.Enemy> ( );
         Player [ ] players = new Player [4];
@@ -27,11 +28,11 @@ namespace CheatSlime.Player {
             for (int i = 0; i < maxNum; i++) {
                 SpawnSlime ( );
             }
-            
+
         }
 
         void Start ( ) {
-             for (int i = 0; i < players.Length; i++) {
+            for (int i = 0; i < players.Length; i++) {
                 players [i] = transform.GetChild (i).GetComponent<Player> ( );
                 SetPlayer (i);
                 avatarID.Add (i);
@@ -46,11 +47,13 @@ namespace CheatSlime.Player {
         }
 
         public void SetPlayer (int avatarID) {
-            players [avatarID].MoveComponent.PlayerInput = GameManager.Instance.PlayerInput [avatarID];
+            players [avatarID].SetInput (GameManager.Instance.PlayerInput [avatarID], (int) playerLvRange.x, (int) playerLvRange.y);
             players [avatarID].Name = GameManager.Instance.PlayerName [avatarID];
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 0, players[avatarID].Health.ToString()); 
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 1, players[avatarID].Damage.ToString()); 
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 2, players[avatarID].Armor.ToString()); 
+            players [avatarID].Pm = this;
+            players [avatarID].Id = avatarID;
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (players [avatarID].Name, 0, players [avatarID].Health.ToString ( ));
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (players [avatarID].Name, 1, players [avatarID].Damage.ToString ( ));
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (players [avatarID].Name, 2, players [avatarID].Armor.ToString ( ));
         }
 
         public void PlayerDead (int avatarID) {
@@ -61,7 +64,7 @@ namespace CheatSlime.Player {
         }
         void SpawnSlime ( ) {
             int type = Random.Range (0, 3);
-            int lv = Mathf.CeilToInt (Random.Range (lvRange.x, lvRange.y));
+            int lv = Mathf.CeilToInt (Random.Range (slimeLvRange.x, slimeLvRange.y));
             GameObject spawn = Instantiate (slimePrefab [type], slimeParent);
             Enemy.Enemy slimeObj = spawn.GetComponent<Enemy.Enemy> ( );
             slimeObj.pm = this;

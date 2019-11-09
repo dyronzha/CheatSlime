@@ -14,9 +14,11 @@ namespace CheatSlime.Player {
         float horiMove = 0;
         float vertMove = 0;
         public bool IsFacingRight { get; protected set; }
+        public string HoriString{set{horiString=value;}}
+        public string VertString{set{vertString=value;}}
 
-        string playerInput = string.Empty;
-        public string PlayerInput { get { return playerInput; } set { playerInput = value; } }
+        //string playerInput = string.Empty;
+        //public string PlayerInput { get { return playerInput; } set { playerInput = value; Debug.Log (value); } }
 
         void Start ( ) { }
 
@@ -36,8 +38,9 @@ namespace CheatSlime.Player {
         }
 
         void Render ( ) {
-            Parent.Am.SetFloat (animHoriString, Mathf.Abs (horiMove)+0.01f);
+            Parent.Am.SetFloat (animHoriString, Mathf.Abs (horiMove) + 0.01f);
             Rend.ChangeDirection (IsFacingRight, Parent.Tf, bRenderInvert);
         }
+
     }
 }

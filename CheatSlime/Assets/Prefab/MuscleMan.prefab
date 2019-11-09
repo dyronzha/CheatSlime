@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5871871301416046152}
   - component: {fileID: 5871871301416046194}
   - component: {fileID: 5871871301416046196}
-  - component: {fileID: 5871871301416046197}
+  - component: {fileID: 2194272103424601450}
   m_Layer: 0
   m_Name: MuscleMan
   m_TagString: Player
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3818764214661992430, guid: eda9964fd04b7c744889d145bacbe8a7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3c5dfa6f30a514ab678a70d34df8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 99
   name: 
   health: 100
   armor: 100
@@ -121,7 +120,7 @@ MonoBehaviour:
   vertString: Vertical
   animHoriString: VelocityX
   moveSpeed: 5.61
-  bRenderInvert: 0
+  bRenderInvert: 1
 --- !u!114 &5871871301416046194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +163,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &5871871301416046197
+--- !u!61 &2194272103424601450
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

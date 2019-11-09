@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 8067046992636490209}
   - component: {fileID: 8067046992636490203}
   - component: {fileID: 8067046992636490205}
-  - component: {fileID: 8067046992636490204}
+  - component: {fileID: 5077373234881552436}
   m_Layer: 0
   m_Name: MahoShouJou
   m_TagString: Player
@@ -133,8 +133,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 6069523268116267228, guid: e5369afde2176b549a52dfcaf0c90a7b,
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 6392457191999503735, guid: d0f9cdeb842ddd44daca18926f236d88,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -158,10 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3c5dfa6f30a514ab678a70d34df8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 99
   name: 
-  health: 100
-  armor: 100
+  health: 70
+  armor: 80
 --- !u!114 &8067046992636490209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +177,7 @@ MonoBehaviour:
   vertString: Vertical
   animHoriString: VelocityX
   moveSpeed: 5.61
-  bRenderInvert: 0
+  bRenderInvert: 1
 --- !u!114 &8067046992636490203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +220,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &8067046992636490204
+--- !u!61 &5077373234881552436
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +233,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0050442815, y: 0.007566452}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -245,7 +244,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7427416, y: 0.9848671}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8067046993099747760
 GameObject:

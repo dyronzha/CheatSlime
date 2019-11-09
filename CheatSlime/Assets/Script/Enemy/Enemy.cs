@@ -62,7 +62,7 @@ namespace CheatSlime.Enemy {
                     difference = player.Armor - armor;
                     break;
             }
-            if (difference > 0) {
+            if (difference < 0) {
                 anim.SetTrigger ("Damage");
             }
             else if (difference >= 0) {
@@ -76,7 +76,6 @@ namespace CheatSlime.Enemy {
             anim.SetTrigger ("Dead");
         }
         void DeadAnimFin ( ) {
-            Debug.Log("Anim Fin");
             pm.SlimeDead (this);
             Destroy (this.gameObject);
         }
