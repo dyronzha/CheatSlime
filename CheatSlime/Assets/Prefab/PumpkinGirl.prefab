@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 72227260319111698}
   - component: {fileID: 72227260319111699}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PumpkinGirl
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3c5dfa6f30a514ab678a70d34df8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 99
   name: 
   health: 100
   armor: 100

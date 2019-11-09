@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace CheatSlime.Player {
     public class Player : MonoBehaviour {
+        [SerializeField] int id = 99;
         [SerializeField] new string name = "";
         Attack atkComponent = null;
         Movement moveComponent = null;
@@ -32,12 +33,15 @@ namespace CheatSlime.Player {
 
         }
         public void TakeDamage (int damage) {
+            int rand=Random.Range(0,2);
+            if(rand==0)Am.SetTrigger("TakeDamage");
             int difference = damage - armor;
             health -= difference > 0 ? difference : 0;
             if (health <= 0) Dead ( );
         }
 
         void Dead ( ) {
+            Am.SetTrigger("Dead");
             Debug.Log (name + " is Dead");
         }
     }

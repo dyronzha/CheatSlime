@@ -22,4 +22,8 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
         base.Awake();
     }
 
+    public void GameEnd(int winner){
+        
+    }
+
 }

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3c5dfa6f30a514ab678a70d34df8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 99
   name: 
   health: 100
   armor: 100
