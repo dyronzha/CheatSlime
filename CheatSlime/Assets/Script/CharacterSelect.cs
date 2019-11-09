@@ -26,10 +26,12 @@ public class CharacterSelect : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
+
+            characterDis[i] = transform.GetChild(i+1).Find("Mask").GetComponent<Image>();
+            characterCollider[i] = transform.GetChild(i+1).GetComponent<Collider2D>();
+            transform.GetChild(i+1).Find("Text").GetComponent<Text>().text = GameManager.Instance.PlayerName[i];
+
             playerIcon[i] = transform.Find("PlayerIcon").GetChild(i).GetComponent<RectTransform>(); ;
-            characterDis[i] = transform.GetChild(i).Find("Mask").GetComponent<Image>();
-            characterCollider[i] = transform.GetChild(i).GetComponent<Collider2D>();
-            transform.GetChild(i).Find("Text").GetComponent<Text>().text = GameManager.Instance.PlayerName[i];
         }
         
     }
@@ -45,33 +47,35 @@ public class CharacterSelect : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (hasChoosen[i]) continue;
-
-            Vector2 dir = new Vector2(Input.GetAxis(playerInput[i] + "Horizontal"), Input.GetAxis(playerInput[i] + "Vertical")).normalized;
-            Vector2 nextPos = playerIcon[i].anchoredPosition + speed * dir * Time.deltaTime;
-            if (nextPos.x > minPosition.x && nextPos.x < maxPosition.x && nextPos.y > minPosition.y && nextPos.y < maxPosition.y) {
-                playerIcon[i].anchoredPosition = nextPos;
-            }
-
-            if (Input.GetButtonDown(playerInput[i] + "Attack"))
-            {
-                //Debug.Log("attack" + playerIcon[i].transform.position);
-                RaycastHit2D hit = Physics2D.Raycast(playerIcon[i].transform.position, Vector2.zero, 1 << LayerMask.NameToLayer("RoleSelect"));
-
-                if (hit.collider != null)
+            if (!hasChoosen[i]) {
+                Vector2 dir = new Vector2(Input.GetAxis(playerInput[i] + "Horizontal"), Input.GetAxis(playerInput[i] + "Vertical")).normalized;
+                Vector2 nextPos = playerIcon[i].anchoredPosition + speed * dir * Time.deltaTime;
+                if (nextPos.x > minPosition.x && nextPos.x < maxPosition.x && nextPos.y > minPosition.y && nextPos.y < maxPosition.y)
                 {
-                    Debug.Log("hit something");
-                    if (hit.transform.name.CompareTo("1") == 0) whichDis[i] = whichCollider[i] = 0;
-                    else if (hit.transform.name.CompareTo("2") == 0) whichDis[i] = whichCollider[i] = 1;
-                    else if (hit.transform.name.CompareTo("3") == 0) whichDis[i] = whichCollider[i] = 2;
-                    else if (hit.transform.name.CompareTo("4") == 0) whichDis[i] = whichCollider[i] = 3;
-                    hasChoosen[i] = true;
-                    characterCollider[whichCollider[i]].enabled = false;
-                    characterDis[whichDis[i]].enabled = true;
-                    GameManager.Instance.PlayerInput[whichCollider[i]] = playerInput[i];
-                    readyNum++;
+                    playerIcon[i].anchoredPosition = nextPos;
+                }
+
+                if (Input.GetButtonDown(playerInput[i] + "Attack"))
+                {
+                    Debug.Log("attack" + playerIcon[i].transform.position);
+                    RaycastHit2D hit = Physics2D.Raycast(playerIcon[i].transform.position, Vector2.zero, 1 << LayerMask.NameToLayer("RoleSelect"));
+
+                    if (hit.collider != null)
+                    {
+                        Debug.Log("hit something");
+                        if (hit.transform.name.CompareTo("1") == 0) whichDis[i] = whichCollider[i] = 0;
+                        else if (hit.transform.name.CompareTo("2") == 0) whichDis[i] = whichCollider[i] = 1;
+                        else if (hit.transform.name.CompareTo("3") == 0) whichDis[i] = whichCollider[i] = 2;
+                        else if (hit.transform.name.CompareTo("4") == 0) whichDis[i] = whichCollider[i] = 3;
+                        hasChoosen[i] = true;
+                        characterCollider[whichCollider[i]].enabled = false;
+                        characterDis[whichDis[i]].enabled = true;
+                        GameManager.Instance.PlayerInput[whichCollider[i]] = playerInput[i];
+                        readyNum++;
+                    }
                 }
             }
+           
             else if (Input.GetButtonDown(playerInput[i] + "Cancle")) {
                 hasChoosen[i] = false;
                 characterCollider[whichCollider[i]].enabled = true;
@@ -80,6 +84,10 @@ public class CharacterSelect : MonoBehaviour
             }
 
         }
+        
+    }
+
+    public void GoStart() {
         if (readyNum >= 4) UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
 }
