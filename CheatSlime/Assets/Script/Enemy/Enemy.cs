@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using P = CheatSlime.Player;
 using CheatSlime.Move;
+using CheatSlime.Player;
 
 using Eccentric.Utils;
 
 using UnityEngine;
 namespace CheatSlime.Enemy {
     public class Enemy : MonoBehaviour {
+
+        public PlayerManager pm = null;
         [SerializeField] Vector2 range = Vector2.zero;
         [SerializeField] bool bRenderInvert = false;
         [SerializeField] float moveSpeed = 0f;
@@ -16,18 +19,33 @@ namespace CheatSlime.Enemy {
         [SerializeField] int health = 0;
         [SerializeField] int armor = 0;
         [SerializeField] int damage = 0;
+        [SerializeField] float rayCastDistance = 0f;
+        [SerializeField] LayerMask groundLayer = 0;
         RangeRandomMove movement = null;
         public int Health { get { return health; } }
         public int Armor { get { return armor; } }
+        Animator anim = null;
         // Start is called before the first frame update
         void Start ( ) {
             movement = new RangeRandomMove (range, moveSpeed, transform.position);
+            anim = GetComponent<Animator> ( );
         }
 
         // Update is called once per frame
         void Update ( ) {
+            if (CheckWall ( )) movement.FindNewTargetPos ( );
             transform.position = movement.GetNextPos (transform.position);
             Render.ChangeDirection (movement.IsFacingRight, transform, bRenderInvert);
+        }
+
+        bool CheckWall ( ) {
+            bool bTouchWall = false;
+            RaycastHit2D rResult = Physics2D.Raycast (transform.position, transform.right, rayCastDistance, groundLayer);
+            RaycastHit2D lResult = Physics2D.Raycast (transform.position, -transform.right, rayCastDistance, groundLayer);
+            RaycastHit2D uResult = Physics2D.Raycast (transform.position, transform.up, rayCastDistance, groundLayer);
+            if (rResult.collider != null || lResult.collider != null || uResult.collider != null) bTouchWall = true;
+            return bTouchWall;
+
         }
 
         public int TakeDamage (P.Player player) {
@@ -44,7 +62,10 @@ namespace CheatSlime.Enemy {
                     difference = player.Armor - armor;
                     break;
             }
-            if (difference >= 0) {
+            if (difference > 0) {
+                anim.SetTrigger ("Damage");
+            }
+            else if (difference >= 0) {
                 exp = Mathf.FloorToInt (difference * expRatio);
                 Dead ( );
             }
@@ -52,9 +73,19 @@ namespace CheatSlime.Enemy {
         }
 
         void Dead ( ) {
-            Debug.Log ("EnemyDead");
+            anim.SetTrigger ("Dead");
+        }
+        void DeadAnimFin ( ) {
+            Debug.Log("Anim Fin");
+            pm.SlimeDead (this);
+            Destroy (this.gameObject);
         }
 
+        public void SetEnemy (int lv) {
+            health = lv;
+            damage = lv;
+            armor = lv;
+        }
 
     }
 }
