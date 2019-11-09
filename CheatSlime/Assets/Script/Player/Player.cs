@@ -7,12 +7,12 @@ namespace CheatSlime.Player {
         [SerializeField] new string name = "";
         Attack atkComponent = null;
         Movement moveComponent = null;
-        [SerializeField]int health = 0;
-        [SerializeField]int armor = 0;
+        [SerializeField] int health = 0;
+        [SerializeField] int armor = 0;
         public int Health { get { return health; } }
         public int Damage { get { return atkComponent.Damage; } }
         public int Armor { get { return armor; } }
-        public string Name { get { return name; } }
+        public string Name { get { return name; } set { name = value; } }
         public Transform Tf { get; protected set; }
         public SpriteRenderer Sr { get; protected set; }
         public Animator Am { get; protected set; }

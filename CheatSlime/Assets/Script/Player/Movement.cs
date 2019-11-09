@@ -9,7 +9,7 @@ namespace CheatSlime.Player {
         [SerializeField] string horiString = "";
         [SerializeField] string vertString = "";
         [SerializeField] string animHoriString = "";
-        [SerializeField] [Range (0, 50)] float moveSpeed = 0f;
+        [SerializeField] [Range (0, 10)] float moveSpeed = 0f;
         [SerializeField] [Tooltip ("Invert Render Direction")] bool bRenderInvert = false;
         float horiMove = 0;
         float vertMove = 0;

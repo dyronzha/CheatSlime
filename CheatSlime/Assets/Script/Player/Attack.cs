@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 
 using Eccentric.Utils;
-
+using E = CheatSlime.Enemy;
 using UnityEngine;
 namespace CheatSlime.Player {
     public class Attack : Component {
         [SerializeField] string horiButton = "";
         [SerializeField] string vertButton = "";
         [SerializeField] string button = "";
-        [SerializeField] string animString = "";
-        [SerializeField] Collider2D trigger = null;
+        [SerializeField] string tAnimString = "";
+        [SerializeField] string dAnimString = "";
+        [SerializeField] string horiAnimString = "";
+        [SerializeField] Collider2D lrTrigger = null;
+        [SerializeField] Collider2D tTrigger = null;
+        [SerializeField] Collider2D dTrigger = null;
         [SerializeField] float coolDown = 0f;
         [SerializeField] int damage = 0;
         public int Damage { get { return damage; } }
         Direction direction = Direction.LEFT;
-        Timer timer;
+        Timer timer=null;
         void Start ( ) {
             timer = new Timer (coolDown);
         }
@@ -24,9 +28,8 @@ namespace CheatSlime.Player {
         void Update ( ) {
             if (Input.GetButtonDown (button) && timer.IsFinished) {
                 //attack motion
-                Parent.Am.SetTrigger (animString);
                 List<Collider2D> colliders = new List<Collider2D> ( );
-                trigger.OverlapCollider (new ContactFilter2D ( ), colliders);
+                AttackDirection (ref colliders);
                 if (colliders.Count != 0) {
                     DetectPlayerOrEnemy (colliders);
                 }
@@ -39,23 +42,44 @@ namespace CheatSlime.Player {
                 if (col.gameObject.tag == "Player")
                     AttackPlayer (col.GetComponent<Player> ( ));
                 else if (col.gameObject.tag == "Enemy")
-                    AttackEnemy ( );
+                    AttackEnemy (col.GetComponent<E.Enemy> ( ));
             }
 
         }
         void AttackPlayer (Player player) {
+            Debug.Log ("Attacking");
             player.TakeDamage (damage);
         }
-        void AttackEnemy ( ) { }
-        void AttackDirection ( ) {
-            if (Input.GetButton (vertButton)) {
-                direction = Input.GetAxis (vertButton) == 1 ? Direction.UP : Direction.DOWN;
-            }
-            else if (Input.GetButton (horiButton)) {
-                direction = Input.GetAxis (horiButton) == 1 ? Direction.LEFT : Direction.RIGHT;
-            }
+        void AttackEnemy (E.Enemy enemy) {
+            enemy.TakeDamage (this.Parent);
         }
-        
+        void AttackDirection (ref List<Collider2D> cols) {
+            if (Input.GetButton (vertButton))
+                direction = Input.GetAxisRaw (vertButton) >=0 ? Direction.DOWN : Direction.UP;
+            else if (Input.GetButton (horiButton))
+                direction = Input.GetAxisRaw (horiButton) >=0 ? Direction.RIGHT : Direction.LEFT;
+            Debug.Log("Attack Direction "+direction);
+            switch (direction) {
+                case Direction.UP:
+                    tTrigger.OverlapCollider (new ContactFilter2D ( ), cols);
+                    Parent.Am.SetTrigger (tAnimString);
+                    break;
+                case Direction.DOWN:
+                    dTrigger.OverlapCollider (new ContactFilter2D ( ), cols);
+                    Parent.Am.SetTrigger (dAnimString);
+                    break;
+                case Direction.LEFT:
+                    lrTrigger.OverlapCollider (new ContactFilter2D ( ), cols);
+                    Parent.Am.SetTrigger (horiAnimString);
+                    break;
+                case Direction.RIGHT:
+                    lrTrigger.OverlapCollider (new ContactFilter2D ( ), cols);
+                    Parent.Am.SetTrigger (horiAnimString);
+                    break;
+            }
+
+        }
+
         enum Direction {
             LEFT,
             RIGHT,
