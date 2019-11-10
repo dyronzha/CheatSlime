@@ -61,7 +61,7 @@ namespace CheatSlime.Player {
             else if (Input.GetButton (horiButton)) {
                 direction = Input.GetAxisRaw (horiButton) >= 0 ? Direction.RIGHT : Direction.LEFT;
             }
-            Debug.Log ("Attack Direction   " + direction);
+            //Debug.Log ("Attack Direction   " + direction);
             switch (direction) {
                 case Direction.UP:
                     tTrigger.OverlapCollider (new ContactFilter2D ( ), cols);

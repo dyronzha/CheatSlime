@@ -33,15 +33,16 @@ namespace CheatSlime.Player {
 
         }
         public void TakeDamage (int damage) {
-            Debug.Log (PlayerInput + " TakeDamage: " + damage);
             int rand = Random.Range (0, 2);
             if (rand == 0) Am.SetTrigger ("TakeDamage");
             int difference = damage - armor;
-            health -= difference > 0 ? difference : 0;
+            Debug.Log (difference > 0 ? difference : 0);
+            health = health - (difference > 0 ? difference : 0);
             if (health <= 0) Dead ( );
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 0, Health.ToString ( ));
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 1, Damage.ToString ( ));
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 2, Armor.ToString ( ));
+            Debug.Log (PlayerInput + " TakeDamage: " + damage + " Remain health " + health);
+            // ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 0, Health.ToString ( ));
+            // ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 1, Damage.ToString ( ));
+            // ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 2, Armor.ToString ( ));
         }
 
         void Dead ( ) {
@@ -51,7 +52,7 @@ namespace CheatSlime.Player {
         void DeadAnimFin ( ) {
             Debug.Log (Id + " is dead deleting");
             Pm.PlayerDead (Id);
-            this.gameObject.SetActive(false);
+            this.gameObject.SetActive (false);
         }
 
         public void SetInput (string playerID, int minLv, int maxLv) {
