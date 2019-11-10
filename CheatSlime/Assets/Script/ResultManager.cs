@@ -10,6 +10,6 @@ public class ResultManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start ( ) {
         winnerImg.sprite = winnerSpr [GameManager.Instance.winnerID];
-        winnerText.text = "Player" + GameManager.Instance.winnerID;
+        winnerText.text = GameManager.Instance.PlayerName[GameManager.Instance.winnerID];
     }
 }

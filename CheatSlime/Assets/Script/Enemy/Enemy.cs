@@ -64,13 +64,14 @@ namespace CheatSlime.Enemy {
                     difference = player.Armor - armor;
                     break;
             }
-            if (difference < 0) {
+            if (difference <= 0) {
                 anim.SetTrigger ("Damage");
             }
-            else if (difference >= 0) {
-                exp = Mathf.FloorToInt (difference * expRatio);
+            else if (difference > 0) {
+                exp = Mathf.FloorToInt (1.5f*Mathf.Log(difference*0.01f, 0.5f));
                 Dead ( );
             }
+            player.GainExp(exp);
             return exp;
         }
 
