@@ -77,14 +77,18 @@ namespace CheatSlime.Player {
             players [avatarID].Name = GameManager.Instance.PlayerName [avatarID];
             players [avatarID].Pm = this;
             players [avatarID].Id = avatarID;
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (players [avatarID].Name, 0, players [avatarID].Health.ToString ( ));
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (players [avatarID].Name, 1, players [avatarID].Damage.ToString ( ));
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (players [avatarID].Name, 2, players [avatarID].Armor.ToString ( ));
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 0, players[avatarID].Health.ToString());
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 1, players[avatarID].Damage.ToString());
+            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(players[avatarID].Name, 2, players[avatarID].Armor.ToString());
         }
 
         public void PlayerDead (int avatarID) {
             this.avatarID.Remove (avatarID);
+
+            Debug.Log("who die" + avatarID);
+            
             if (this.avatarID.Count == 1) {
+                Debug.Log("sursive " + this.avatarID[0]);
                 GameManager.Instance.GameEnd (this.avatarID [0]);
             }
         }

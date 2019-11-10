@@ -23,7 +23,7 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
     }
 
     public void GameEnd (int winner) {
-        winnerID = winnerID;
+        winnerID = winner;
         SceneManager.LoadScene (4);
     }
 

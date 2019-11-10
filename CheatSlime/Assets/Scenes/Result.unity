@@ -153,7 +153,7 @@ MonoBehaviour:
   - {fileID: -7504947102403957323, guid: 22d550b1f83aa924c91694f6dc89fc47, type: 3}
   - {fileID: -3818764214661992430, guid: eda9964fd04b7c744889d145bacbe8a7, type: 3}
   - {fileID: -5655086028711026116, guid: 8963915e103529c4a8ac3dd098ca527f, type: 3}
-  - {fileID: 0}
+  - {fileID: 6901025758877597405, guid: 3e4ac0861f5c89143aad451571aa785b, type: 3}
   winnerImg: {fileID: 1813341804}
   winnerText: {fileID: 1681445655}
 --- !u!4 &156627605
@@ -444,7 +444,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1546763454}
   - component: {fileID: 1546763453}
-  - component: {fileID: 1546763452}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -452,14 +451,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1546763452
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546763451}
-  m_Enabled: 1
 --- !u!20 &1546763453
 Camera:
   m_ObjectHideFlags: 0

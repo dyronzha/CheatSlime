@@ -41,7 +41,7 @@ public class CreateRoom : MonoBehaviour
             {
                 Debug.LogError(
                   "Could not resolve all Firebase dependencies: " + dependencyStatus);
-                log.text = "Could not resolve all Firebase dependencies: " + dependencyStatus;
+                LogInfo("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
 
@@ -69,9 +69,9 @@ public class CreateRoom : MonoBehaviour
 
     public void Confirm() {
         
-        Debug.Log("confirm");
+        //Debug.Log("confirm");
         if (trans) {
-            Debug.Log("忙碌中");
+            //Debug.Log("忙碌中");
             return;
         } 
         if (string.IsNullOrEmpty(room.text))
@@ -80,6 +80,7 @@ public class CreateRoom : MonoBehaviour
             return;
         }
         else {
+            LogInfo("創建中");
             trans = true;
             FirebaseDatabase.DefaultInstance.GetReference(room.text).GetValueAsync().ContinueWith(task => {
                 if (task.IsFaulted)
@@ -95,11 +96,11 @@ public class CreateRoom : MonoBehaviour
                         LogInfo("已有相同房間名");
                     }
                     else {
-                        Debug.Log("go check player");
+                        //Debug.Log("go check player");
 
                         CheckPlayerName();
 
-                        Debug.Log("end callback");
+                        //Debug.Log("end callback");
                     }
                 }
             });
@@ -133,7 +134,7 @@ public class CreateRoom : MonoBehaviour
             }
         }
 
-        Debug.Log("有" + playerNum + "位玩家");
+        //Debug.Log("有" + playerNum + "位玩家");
 
         if (playerNum < 4) {
             LogInfo("需要四位玩家才能遊玩");
