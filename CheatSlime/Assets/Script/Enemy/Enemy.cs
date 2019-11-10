@@ -22,12 +22,14 @@ namespace CheatSlime.Enemy {
         [SerializeField] float rayCastDistance = 0f;
         [SerializeField] LayerMask groundLayer = 0;
         RangeRandomMove movement = null;
+        new SpriteRenderer renderer = null;
         public int Health { get { return health; } }
         public int Armor { get { return armor; } }
         Animator anim = null;
         // Start is called before the first frame update
         void Start ( ) {
             movement = new RangeRandomMove (range, moveSpeed, transform.position);
+            renderer = GetComponent<SpriteRenderer> ( );
             anim = GetComponent<Animator> ( );
         }
 
@@ -35,7 +37,7 @@ namespace CheatSlime.Enemy {
         void Update ( ) {
             if (CheckWall ( )) movement.FindNewTargetPos ( );
             transform.position = movement.GetNextPos (transform.position);
-            Render.ChangeDirection (movement.IsFacingRight, transform, bRenderInvert);
+            Render.ChangeDirectionXWithSpriteRender (movement.IsFacingRight, renderer);
         }
 
         bool CheckWall ( ) {
