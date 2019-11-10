@@ -39,9 +39,9 @@ namespace CheatSlime.Player {
             int difference = damage - armor;
             health -= difference > 0 ? difference : 0;
             if (health <= 0) Dead ( );
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 0, Health.ToString ( ));
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 1, Damage.ToString ( ));
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 2, Armor.ToString ( ));
+            //ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 0, Health.ToString ( ));
+            //ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 1, Damage.ToString ( ));
+            //ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 2, Armor.ToString ( ));
         }
 
         void Dead ( ) {
