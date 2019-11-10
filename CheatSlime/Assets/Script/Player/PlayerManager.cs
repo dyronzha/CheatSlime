@@ -15,6 +15,7 @@ namespace CheatSlime.Player {
     public class PlayerManager : MonoBehaviour {
         [SerializeField] List<GameObject> slimePrefab = new List<GameObject> ( );
         [SerializeField] float maxNum = 0;
+        [SerializeField] Transform slimeSpawnPos;
         [SerializeField] Vector2 slimeLvRange = Vector2.zero;
         [SerializeField] Vector2 playerLvRange = Vector2.zero;
         [SerializeField] Transform slimeParent = null;
@@ -22,28 +23,50 @@ namespace CheatSlime.Player {
         Player [ ] players = new Player [4];
         List<int> avatarID = new List<int> ( );
 
+        int perSpawnNum;
+        float spawnTime = .0f, spawnRandomTime = .0f;
+        Vector3[] spawnPos;
+
         // Start is called before the first frame update
         private void Awake ( ) {
 
-            for (int i = 0; i < maxNum; i++) {
-                SpawnSlime ( );
+            spawnPos = new Vector3[slimeSpawnPos.childCount];
+            for (int i = 0; i < spawnPos.Length; i++)
+            {
+                spawnPos[i] = slimeSpawnPos.GetChild(i).position;
             }
-
         }
 
         void Start ( ) {
             for (int i = 0; i < players.Length; i++) {
                 players [i] = transform.GetChild (i).GetComponent<Player> ( );
                 SetPlayer (i);
-                avatarID.Add (i);
+                avatarID.Add (i);   
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                SpawnSlime();
             }
         }
 
         // Update is called once per frame
         void Update ( ) {
-            while (slimes.Count <= maxNum) {
-                SpawnSlime ( );
+
+            if (slimes.Count < maxNum && spawnTime > spawnRandomTime) {
+                spawnTime = .0f;
+                spawnRandomTime = Random.Range(1.0f, 5.0f);
+                if (Random.Range(0, 100) > 30)
+                {
+                    int count = 0;
+                    int randNum = Random.Range(3, 8);
+                    while (count < randNum) {
+                        count++;
+                        SpawnSlime();
+                    }
+                }
             }
+            spawnTime += Time.deltaTime;
+
         }
 
         public void SetPlayer (int avatarID) {
@@ -63,9 +86,11 @@ namespace CheatSlime.Player {
             }
         }
         void SpawnSlime ( ) {
+            Debug.Log(spawnPos[0]);
+            Vector3 pos = spawnPos[Random.Range(0, spawnPos.Length)];
             int type = Random.Range (0, 3);
             int lv = Mathf.CeilToInt (Random.Range (slimeLvRange.x, slimeLvRange.y));
-            GameObject spawn = Instantiate (slimePrefab [type], slimeParent);
+            GameObject spawn = Instantiate (slimePrefab [type], pos, Quaternion.identity, slimeParent);
             Enemy.Enemy slimeObj = spawn.GetComponent<Enemy.Enemy> ( );
             slimeObj.pm = this;
             slimes.Add (slimeObj);
