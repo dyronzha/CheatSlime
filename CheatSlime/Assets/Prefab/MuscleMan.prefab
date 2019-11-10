@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: Fire1
-  animString: 
+  animString: Attack
   coolDown: 0.1
   damage: 0
   distance: 0.5
