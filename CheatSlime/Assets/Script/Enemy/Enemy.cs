@@ -9,7 +9,6 @@ using Eccentric.Utils;
 using UnityEngine;
 namespace CheatSlime.Enemy {
     public class Enemy : MonoBehaviour {
-
         public PlayerManager pm = null;
         [SerializeField] Vector2 range = Vector2.zero;
         [SerializeField] bool bRenderInvert = false;
@@ -21,6 +20,7 @@ namespace CheatSlime.Enemy {
         [SerializeField] int damage = 0;
         [SerializeField] float rayCastDistance = 0f;
         [SerializeField] LayerMask groundLayer = 0;
+        [SerializeField] TextMesh text = null;
         RangeRandomMove movement = null;
         new SpriteRenderer renderer = null;
         public int Health { get { return health; } }
@@ -86,6 +86,7 @@ namespace CheatSlime.Enemy {
             health = lv;
             damage = lv;
             armor = lv;
+            text.text = lv.ToString ( );
         }
 
     }

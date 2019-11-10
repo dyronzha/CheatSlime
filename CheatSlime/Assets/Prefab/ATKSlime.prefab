@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
-  range: {x: 2, y: 2}
+  range: {x: 10, y: 10}
   bRenderInvert: 0
   moveSpeed: 1
   expRatio: 0.1
@@ -126,6 +126,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  text: {fileID: 7701400672693871385}
 --- !u!95 &6295300348294903556
 Animator:
   serializedVersion: 3
