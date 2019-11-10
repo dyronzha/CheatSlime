@@ -20,6 +20,10 @@ namespace CheatSlime.Player {
         // Update is called once per frame
         void Update ( ) {
             if (Input.GetButtonDown (button) && timer.IsFinished) {
+                if (Parent.Id == 0) AudioManager.S_AudioManager.PlayEffectAudio("PumpkinAttack", 0.7f);
+                else if (Parent.Id == 1) AudioManager.S_AudioManager.PlayEffectAudio("MuscelAttack", 0.5f);
+                else if (Parent.Id == 2) AudioManager.S_AudioManager.PlayEffectAudio("MagicAttack", 0.3f);
+                else if (Parent.Id == 3) AudioManager.S_AudioManager.PlayEffectAudio("CyagiAttack", 0.7f);
                 Vector2 direction = Parent.IsFacingRight?Vector2.right : Vector2.left;
                 RaycastHit2D [ ] hits;
                 hits = Physics2D.RaycastAll (Parent.Tf.position, direction, distance);

@@ -34,7 +34,7 @@ namespace CheatSlime.Player {
             for (int i = 0; i < spawnPos.Length; i++) {
                 spawnPos [i] = slimeSpawnPos.GetChild (i).position;
             }
-            for (int i = 0; i < maxNum; i++) {
+            for (int i = 0; i < 30; i++) {
                  Debug.Log(i+" "+maxNum);
                 SpawnSlime ( );
             }

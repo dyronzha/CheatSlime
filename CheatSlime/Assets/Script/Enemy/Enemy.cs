@@ -77,6 +77,7 @@ namespace CheatSlime.Enemy {
 
         void Dead ( ) {
             anim.SetTrigger ("Dead");
+            AudioManager.S_AudioManager.PlayEffectAudio("SlimeDead",0.7f);
         }
         void DeadAnimFin ( ) {
             pm.SlimeDead (this);

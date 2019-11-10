@@ -1560,6 +1560,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2637815194955426134, guid: 5c0b82394cf537140b0d6a0421b4d35b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0b82394cf537140b0d6a0421b4d35b, type: 3}
 --- !u!1 &478886590
@@ -1592,9 +1597,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectClips:
-  - name: PumokinAttack
+  - name: PumpkinAttack
     clip: {fileID: 8300000, guid: f0dff4fb13f02614caaef9d15e63cf83, type: 3}
-  - name: PumokinDead
+  - name: PumpkinDead
     clip: {fileID: 8300000, guid: 96af3f3fd337f0549a483155b642e384, type: 3}
   - name: MuscelAttack
     clip: {fileID: 8300000, guid: f00147202e0118c419869307d8841d01, type: 3}
@@ -1706,7 +1711,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487483477}
-  m_LocalRotation: {x: -4.731455e-12, y: 0.001110683, z: -0.0000000042599484, w: 0.9999994}
+  m_LocalRotation: {x: -4.7307605e-12, y: 0.001110683, z: -0.000000004259323, w: 0.9999994}
   m_LocalPosition: {x: 1.3877864, y: 1.3149999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2403,7 +2408,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707797745}
-  m_LocalRotation: {x: -4.731455e-12, y: 0.001110683, z: -0.0000000042599484, w: 0.9999994}
+  m_LocalRotation: {x: -4.7307605e-12, y: 0.001110683, z: -0.000000004259323, w: 0.9999994}
   m_LocalPosition: {x: 1.3877864, y: 1.3149999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
