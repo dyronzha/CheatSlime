@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class TitleManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+using UnityEngine.UI;
+public class TitleManager : MonoBehaviour {
+    [SerializeField] Canvas staff = null;
+
+    private void Start ( ) {
+        staff.enabled = false;
+    }
+    public void StartBtnPress ( ) {
+        SceneManager.LoadScene (1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetButtonDown("Fire1"))SceneManager.LoadScene(1);
+    public void StaffBtnPress ( ) {
+        staff.enabled = true;
+    }
+
+    public void BackBtnPress ( ) {
+        staff.enabled = false;
     }
 }
