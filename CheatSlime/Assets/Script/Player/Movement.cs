@@ -14,8 +14,8 @@ namespace CheatSlime.Player {
         float horiMove = 0;
         float vertMove = 0;
         public bool IsFacingRight { get; protected set; }
-        public string HoriString{set{horiString=value;}}
-        public string VertString{set{vertString=value;}}
+        public string HoriString { set { horiString = value; } }
+        public string VertString { set { vertString = value; } }
 
         //string playerInput = string.Empty;
         //public string PlayerInput { get { return playerInput; } set { playerInput = value; Debug.Log (value); } }

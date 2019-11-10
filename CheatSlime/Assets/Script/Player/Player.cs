@@ -19,6 +19,7 @@ namespace CheatSlime.Player {
         public string PlayerInput { get; set; }
         public PlayerManager Pm { get; set; }
         public int Id { get; set; }
+        public bool IsFacingRight { get { return moveComponent.IsFacingRight; } }
 
         // Start is called before the first frame update
         void Awake ( ) {
@@ -33,12 +34,13 @@ namespace CheatSlime.Player {
 
         }
         public void TakeDamage (int damage) {
-            int rand = Random.Range (0, 2);
-            if (rand == 0) Am.SetTrigger ("TakeDamage");
             int difference = damage - armor;
-            Debug.Log (difference > 0 ? difference : 0);
             health = health - (difference > 0 ? difference : 0);
             if (health <= 0) Dead ( );
+            else {
+                int rand = Random.Range (0, 2);
+                if (rand == 0) Am.SetTrigger ("TakeDamage");
+            }
             Debug.Log (PlayerInput + " TakeDamage: " + damage + " Remain health " + health);
             // ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 0, Health.ToString ( ));
             // ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo (Name, 1, Damage.ToString ( ));
@@ -47,6 +49,8 @@ namespace CheatSlime.Player {
 
         void Dead ( ) {
             Am.SetTrigger ("Dead");
+            moveComponent.enabled = false;
+            atkComponent.enabled = false;
             Debug.Log (name + " is Dead");
         }
         void DeadAnimFin ( ) {
@@ -59,8 +63,8 @@ namespace CheatSlime.Player {
             PlayerInput = playerID;
             moveComponent.HoriString = PlayerInput + "Horizontal";
             moveComponent.VertString = PlayerInput + "Vertical";
-            atkComponent.horiButton = PlayerInput + "Horizontal";
-            atkComponent.vertButton = PlayerInput + "Vertical";
+            //atkComponent.horiButton = PlayerInput + "Horizontal";
+            //atkComponent.vertButton = PlayerInput + "Vertical";
             atkComponent.button = PlayerInput + "Attack";
             health = Random.Range (minLv, maxLv);
             atkComponent.Damage = Random.Range (minLv, maxLv);
