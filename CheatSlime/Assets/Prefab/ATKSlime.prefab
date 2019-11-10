@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
-  range: {x: 10, y: 10}
+  range: {x: 10, y: 15}
   bRenderInvert: 0
   moveSpeed: 1
   expRatio: 0.1

@@ -46,7 +46,11 @@ namespace CheatSlime.Player {
                 SetPlayer (i);
                 avatarID.Add (i);
             }
-
+            //Debug.Log(Mathf.Log(0f, 0.5f));
+            //Debug.Log(Mathf.Log(0.01f, 0.5f));
+            //Debug.Log(Mathf.Log(0.1f, 0.5f));
+            //Debug.Log(Mathf.Log(0.5f,0.5f));
+            //Debug.Log(Mathf.Log(1.0f, 0.5f));
         }
 
         // Update is called once per frame

@@ -72,9 +72,9 @@ namespace CheatSlime.Player {
             armor = Random.Range (minLv, maxLv);
         }
         public void GainExp (int exp) {
-            health += exp;
-            Damage += exp;
-            armor += exp;
+            health = Mathf.Clamp(health + exp,0,100);
+            Damage = Mathf.Clamp(Damage + exp, 0, 100);
+            armor = Mathf.Clamp(armor + exp, 0, 100);
 
         }
     }
