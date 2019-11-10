@@ -192,9 +192,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.21157691, y: 0}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.25778762
 --- !u!114 &4197895462217837171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
-  range: {x: 4, y: 4}
+  range: {x: 3, y: 3}
   bRenderInvert: 0
   moveSpeed: 1
   expRatio: 0.1
@@ -216,7 +216,7 @@ MonoBehaviour:
   health: 10
   armor: 10
   damage: 10
-  rayCastDistance: 2
+  rayCastDistance: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 512

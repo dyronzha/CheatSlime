@@ -98,9 +98,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.112395346}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.27239534
 --- !u!114 &4197895462217837171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   health: 10
   armor: 10
   damage: 10
-  rayCastDistance: 2
+  rayCastDistance: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 512

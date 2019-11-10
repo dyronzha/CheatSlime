@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour {
             UpdateUI (p2UI);
             UpdateUI (p3UI);
             UpdateUI (p4UI);
+            timer.Reset();
         }
     }
 

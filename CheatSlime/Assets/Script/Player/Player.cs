@@ -55,6 +55,10 @@ namespace CheatSlime.Player {
         }
         void DeadAnimFin ( ) {
             Debug.Log (Id + " is dead deleting");
+            if (Id == 0) AudioManager.S_AudioManager.PlayEffectAudio("PumpkinDead", 0.7f);
+            else if (Id == 1) AudioManager.S_AudioManager.PlayEffectAudio("MuscelDead", 0.7f);
+            else if (Id == 2) AudioManager.S_AudioManager.PlayEffectAudio("MagicDead", 0.7f);
+            else if (Id == 3) AudioManager.S_AudioManager.PlayEffectAudio("CyagiDead", 0.7f);
             Pm.PlayerDead (Id);
             this.gameObject.SetActive (false);
         }
