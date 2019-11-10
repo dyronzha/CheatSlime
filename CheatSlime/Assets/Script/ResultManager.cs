@@ -12,4 +12,9 @@ public class ResultManager : MonoBehaviour {
         winnerImg.sprite = winnerSpr [GameManager.Instance.winnerID];
         winnerText.text = GameManager.Instance.PlayerName[GameManager.Instance.winnerID];
     }
+
+
+    public void ReturnMain() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 }
