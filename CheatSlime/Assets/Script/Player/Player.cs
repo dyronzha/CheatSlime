@@ -61,6 +61,7 @@ namespace CheatSlime.Player {
 
         public void SetInput (string playerID, int minLv, int maxLv) {
             PlayerInput = playerID;
+            Debug.Log(moveComponent);
             moveComponent.HoriString = PlayerInput + "Horizontal";
             moveComponent.VertString = PlayerInput + "Vertical";
             //atkComponent.horiButton = PlayerInput + "Horizontal";
