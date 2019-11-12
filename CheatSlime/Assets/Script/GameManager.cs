@@ -6,13 +6,13 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
 
     public int winnerID { get; set; }
 
-    string [ ] playerInput = new string[4] { "p1","p2","p3","p4"};
+    string [ ] playerInput = new string [4] { "p1", "p2", "p3", "p4" };
     public string [ ] PlayerInput {
         set { playerInput = value; }
         get { return playerInput; }
     }
 
-    string [ ] playerName = new string[4] { "南瓜糖米", "肌肉糖米", "恰吉糖米", "魔法糖米"};
+    string [ ] playerName = new string [4] { "南瓜糖米", "肌肉糖米", "恰吉糖米", "魔法糖米" };
     public string [ ] PlayerName {
         set { playerName = value; }
         get { return playerName; }
@@ -25,6 +25,10 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
     public void GameEnd (int winner) {
         winnerID = winner;
         SceneManager.LoadScene (3);
+    }
+    void Update ( ) {
+        if (Input.GetKeyDown (KeyCode.Escape))
+            Application.Quit ( );
     }
 
 }
