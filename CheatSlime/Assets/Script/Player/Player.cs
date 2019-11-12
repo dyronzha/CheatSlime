@@ -42,9 +42,6 @@ namespace CheatSlime.Player {
                 if (rand == 0) Am.SetTrigger ("TakeDamage");
             }
             Debug.Log (PlayerInput + " TakeDamage: " + damage + " Remain health " + health);
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(Name, 0, Health.ToString());
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(Name, 1, Damage.ToString());
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(Name, 2, Armor.ToString());
         }
 
         void Dead ( ) {
@@ -79,10 +76,6 @@ namespace CheatSlime.Player {
             health = Mathf.Clamp(health + exp,0,100);
             Damage = Mathf.Clamp(Damage + exp, 0, 100);
             armor = Mathf.Clamp(armor + exp, 0, 100);
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(Name, 0, Health.ToString());
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(Name, 1, Damage.ToString());
-            ChangePlayerInfo.s_ChangePlayerInfo.UpLoadPlayerInfo(Name, 2, Armor.ToString());
-
         }
     }
 }

@@ -12,7 +12,7 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
         get { return playerInput; }
     }
 
-    string [ ] playerName = new string[4] { "aa", "bb", "cc", "dd"};
+    string [ ] playerName = new string[4] { "南瓜糖米", "肌肉糖米", "恰吉糖米", "魔法糖米"};
     public string [ ] PlayerName {
         set { playerName = value; }
         get { return playerName; }
@@ -24,7 +24,7 @@ public class GameManager : TSingletonMonoBehavior<GameManager> {
 
     public void GameEnd (int winner) {
         winnerID = winner;
-        SceneManager.LoadScene (4);
+        SceneManager.LoadScene (3);
     }
 
 }

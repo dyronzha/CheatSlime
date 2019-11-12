@@ -39,7 +39,6 @@ public class CharacterSelect : MonoBehaviour
     {
         minPosition = 0.5f*new Vector2(-Screen.width, -Screen.height) + new Vector2(30,30);
         maxPosition = 0.5f*new Vector2(Screen.width, Screen.height) - new Vector2(30, 30); ;
-        Debug.Log(Screen.width);
     }
 
     // Update is called once per frame
@@ -88,7 +87,7 @@ public class CharacterSelect : MonoBehaviour
     }
 
     public void GoStart() {
-        if (readyNum >= 4) UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        if (readyNum >= 4) UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 }
 
